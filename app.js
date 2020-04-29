@@ -6,6 +6,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+// had to add this and 'dotenv' require
 const blogRouter = require('./routes/blog')
 
 const app = express();
@@ -17,7 +18,8 @@ mongoose
   })
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(`MongoDB Error: ${err}`));
-// view engine setup
+
+  // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -27,6 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// had to fix this as well
 app.use('/', blogRouter);
 
 // catch 404 and forward to error handler

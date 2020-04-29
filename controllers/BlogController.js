@@ -3,10 +3,12 @@ const Blog = require('../models/Blog');
 module.exports = {
   getAllBlogs: (req, res) => {
     Blog.find({}).then((blogs) => {
+      blogs.reverse();
       return res.json(blogs);
     });
   },
   createBlog: (req, res) => {
+    const newBlog = new Blog();
     newBlog.title = req.body.title;
     newBlog.author = req.body.author;
     newBlog.subject = req.body.subject;

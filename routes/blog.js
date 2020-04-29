@@ -7,7 +7,7 @@ const {
   getBlogById,
   updateBlog,
   deleteBlog,
-} = require('..BlogController');
+} = require('../controllers/BlogController');
 
 /* GET home page. */
 // router.get('/', function (req, res, next) {

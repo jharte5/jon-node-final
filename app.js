@@ -6,6 +6,8 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+const blogRouter = require('./routes/blog')
+
 const app = express();
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -25,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', 'blogRouter');
+app.use('/', blogRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
